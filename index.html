@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tarô da Figueira</title>
+
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #F5F1E8;
+    color: #29232F;
+    line-height: 1.6;
+  }
+
+  header {
+    background: #151219;
+    padding: 20px 7%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    color: #C8B6F0;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  nav a {
+    color: #F5F1E8;
+    text-decoration: none;
+    margin-left: 25px;
+  }
+
+  nav a:hover {
+    color: #B99AEF;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #151219, #2B2038);
+    color: #F5F1E8;
+    text-align: center;
+    padding: 120px 20px;
+  }
+
+  .hero h1 {
+    font-size: 60px;
+    color: #C8B6F0;
+    margin-bottom: 20px;
+  }
+
+  .hero p {
+    font-size: 20px;
+    max-width: 700px;
+    margin: auto;
+    color: #F5F1E8;
+  }
+
+  .botao {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 25px;
+    background: #9B7EDE;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .botao:hover {
+    background: #8063C4;
+    transform: translateY(-2px);
+  }
+
+  section {
+    padding: 80px 7%;
+  }
+
+  .titulo {
+    text-align: center;
+    margin-bottom: 45px;
+  }
+
+  .titulo h2 {
+    color: #33283F;
+    font-size: 38px;
+    margin-bottom: 10px;
+  }
+
+  .titulo p {
+    color: #665F6D;
+  }
+
+  .sobre {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
+    color: #403A45;
+  }
+
+  .tiragens {
+    background: #EAE4DC;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+
+  .card {
+    background: #FDFBF6;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(21, 18, 25, 0.12);
+    text-align: center;
+    border-top: 4px solid #9B7EDE;
+    transition: 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(21, 18, 25, 0.18);
+  }
+
+  .card h3 {
+    color: #33283F;
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    color: #665F6D;
+  }
+
+  .preco {
+    color: #8063C4;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+
+  .perguntas {
+    background: #151219;
+    color: #F5F1E8;
+  }
+
+  .perguntas .titulo h2 {
+    color: #C8B6F0;
+  }
+
+  .perguntas .titulo p {
+    color: #DED7CC;
+  }
+
+  .perguntas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .pergunta {
+    border: 1px solid #9B7EDE;
+    background: #211B26;
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  .pergunta:hover {
+    background: #2B2038;
+    transform: translateY(-5px);
+  }
+
+  .pergunta h3 {
+    color: #C8B6F0;
+    font-size: 24px;
+  }
+
+  .pergunta p {
+    color: #DED7CC;
+  }
+
+  .pergunta .valor {
+    color: #F5F1E8;
+    font-size: 27px;
+    font-weight: bold;
+    margin: 15px 0;
+  }
+
+  .como-funciona {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+
+  .passo {
+    background: #FDFBF6;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(21, 18, 25, 0.10);
+    text-align: center;
+  }
+
+  .passo h3 {
+    color: #33283F;
+    margin-bottom: 10px;
+  }
+
+  .passo p {
+    color: #665F6D;
+  }
+
+  .numero {
+    background: #9B7EDE;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .contato {
+    text-align: center;
+    background: #EAE4DC;
+  }
+
+  .contato h2 {
+    color: #33283F;
+    font-size: 40px;
+  }
+
+  .contato p {
+    color: #665F6D;
+  }
+
+  footer {
+    background: #151219;
+    color: #DED7CC;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .whatsapp {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #9B7EDE;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 28px;
+    z-index: 999;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+    transition: 0.3s;
+  }
+
+  .whatsapp:hover {
+    background: #8063C4;
+    transform: scale(1.08);
+  }
+
+  @media (max-width: 900px) {
+
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .perguntas-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .como-funciona {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+
+    .menu {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    nav a {
+      margin: 5px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+    }
+
+    .cards,
+    .perguntas-grid {
+      grid-template-columns: 1fr;
+    }
+
+    section {
+      padding: 60px 5%;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="menu">
+
+    <div class="logo">
+      Tarô da Figueira
+    </div>
+
+    <nav>
+      <a href="#sobre">O Tarot</a>
+      <a href="#tiragens">Tiragens</a>
+      <a href="#perguntas">Perguntas</a>
+      <a href="#como">Como funciona</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="hero">
+
+  <h1>Tarô da Figueira</h1>
+
+  <p>
+    Um espaço para encontrar novas perspectivas,
+    reflexão e orientação através das cartas do Tarot.
+  </p>
+
+  <a href="#tiragens" class="botao">
+    Conheça as tiragens
+  </a>
+
+</section>
+
+
+<section id="sobre">
+
+  <div class="titulo">
+
+    <h2>O que é o Tarot?</h2>
+
+    <p>
+      O tarô é uma ferramenta de orientação e autoconhecimento
+    </p>
+
+  </div>
+
+  <div class="sobre">
+
+    <p>
+      Durante a consulta, você pode me trazer uma pergunta ou situação 
+      que queira entender melhor. 
+      Através das cartas, faço uma leitura simbólica para observar as energias, 
+      sentimentos, possibilidades e caminhos relacionados à sua questão.
+    </p>
+
+    <br>
+
+    <p>
+     O tarô não determina um futuro fixo, porque nossas escolhas e atitudes podem mudar os caminhos.
+      A leitura serve para trazer clareza, mostrar tendências e 
+      ajudar você a enxergar a situação por outros ângulos.
+    </p>
+
+    <br>
+
+    <p>
+     Você pode perguntar sobre amor, relacionamentos, família, trabalho, vida pessoal e 
+     outras questões que queira compreender melhor. 
+    A consulta é um momento seu, feito com acolhimento, respeito e sigilo
+    </p>
+
+
+  </div>
+
+</section>
+
+
+<section class="tiragens" id="tiragens">
+
+  <div class="titulo">
+
+    <h2>Tiragens</h2>
+
+    <p>
+      Escolha o tema que deseja consultar.
+    </p>
+
+  </div>
+
+
+  <div class="cards">
+
+
+    <div class="card">
+
+      <h3> Amor</h3>
+
+      <p>
+        Questões relacionadas à vida amorosa,
+        sentimentos e caminhos afetivos.
+      </p>
+
+      <div class="preco">
+        R$ 65,00
+      </div>
+
+      <a
+        class="botao"
+        href="#"
+        onclick="abrirWhatsApp('Tiragem de Amor - R$ 50,00')"
+      >
+        Quero essa tiragem
+      </a>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3> Relacionamento</h3>
+
+      <p>
+        Para compreender melhor uma relação,
+        sentimentos, conflitos e possibilidades.
+      </p>
+
+      <div class="preco">
+        R$ 55,00
+      </div>
+
+      <a
+        class="botao"
+        href="#"
+        onclick="abrirWhatsApp('Tiragem de Relacionamento - R$ 60,00')"
+      >
+        Quero essa tiragem
+      </a>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Família</h3>
+
+      <p>
+        Questões familiares, convivência,
+        sentimentos e situações importantes.
+      </p>
+
+      <div class="preco">
+        R$ 50,00
+      </div>
+
+      <a
+        class="botao"
+        href="#"
+        onclick="abrirWhatsApp('Tiragem de Família - R$ 50,00')"
+      >
+        Quero essa tiragem
+      </a>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3> Trabalho</h3>
+
+      <p>
+        Questões profissionais, mudanças,
+        oportunidades e carreira.
+      </p>
+
+      <div class="preco">
+        R$ 45,00
+      </div>
+
+      <a
+        class="botao"
+        href="#"
+        onclick="abrirWhatsApp('Tiragem de Trabalho e Carreira - R$ 60,00')"
+      >
+        Quero essa tiragem
+      </a>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3> Finanças</h3>
+
+      <p>
+        Reflexões sobre escolhas,
+        oportunidades e vida financeira.
+      </p>
+
+      <div class="preco">
+        R$ 45,99
+      </div>
+
+      <a
+        class="botao"
+        href="#"
+        onclick="abrirWhatsApp('Tiragem de Finanças - R$ 60,00')"
+      >
+        Quero essa tiragem
+      </a>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3> Autoconhecimento</h3>
+
+      <p>
+        Uma leitura voltada para sentimentos,
+        padrões, aprendizados e desenvolvimento pessoal.
+      </p>
+
+      <div class="preco">
+        R$ 60,00
+      </div>
+
+      <a
+        class="botao"
+        href="#"
+        onclick="abrirWhatsApp('Tiragem de Autoconhecimento - R$ 70,00')"
+      >
+        Quero essa tiragem
+      </a>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<section class="perguntas" id="perguntas">
+
+  <div class="titulo">
+
+    <h2>Perguntas Avulsas</h2>
+
+    <p>
+      Tem uma pergunta específica?
+      Escolha a quantidade de perguntas.
+    </p>
+
+  </div>
+
+
+  <div class="perguntas-grid">
+
+
+    <div class="pergunta">
+
+      <h3>1 pergunta</h3>
+
+      <p>
+        Uma questão específica.
+      </p>
+
+      <div class="valor">
+        R$ 19,99
+      </div>
+
+      <a
+        class="botao"
+        href="#"
+        onclick="abrirWhatsApp('1 pergunta avulsa - R$ 19,99')"
+      >
+        Escolher
+      </a>
+
+    </div>
+
+
+    <div class="pergunta">
+
+      <h3>3 perguntas</h3>
+
+      <p>
+        Três questões para sua consulta.
+      </p>
+
+      <div class="valor">
+        R$ 45,00
+      </div>
+
+      <a
+        class="botao"
+        href="#"
+        onclick="abrirWhatsApp('3 perguntas avulsas - R$ 45,00')"
+      >
+        Escolher
+      </a>
+
+    </div>
+
+
+    <div class="pergunta">
+
+      <h3>5 perguntas</h3>
+
+      <p>
+        Cinco questões para aprofundar sua consulta.
+      </p>
+
+      <div class="valor">
+        R$ 65,00
+      </div>
+
+      <a
+        class="botao"
+        href="#"
+        onclick="abrirWhatsApp('5 perguntas avulsas - R$ 65,00')"
+      >
+        Escolher
+      </a>
+
+    </div>
+
+
+    <div class="pergunta">
+
+      <h3>Jogo completo</h3>
+
+      <p>
+        Uma leitura completa para uma visão
+        mais ampla do seu momento.
+      </p>
+
+      <div class="valor">
+        R$ 90,00
+      </div>
+
+      <a
+        class="botao"
+        href="#"
+        onclick="abrirWhatsApp('Jogo completo - R$ 90,00')"
+      >
+        Escolher
+      </a>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<section id="como">
+
+  <div class="titulo">
+
+    <h2>Como funciona?</h2>
+
+    <p>
+      Fazer sua consulta é simples.
+    </p>
+
+  </div>
+
+
+  <div class="como-funciona">
+
+
+    <div class="passo">
+
+      <div class="numero">
+        1
+      </div>
+
+      <h3>Escolha</h3>
+
+      <p>
+        Escolha uma tiragem ou a quantidade
+        de perguntas que deseja fazer.
+      </p>
+
+    </div>
+
+
+    <div class="passo">
+
+      <div class="numero">
+        2
+      </div>
+
+      <h3>WhatsApp</h3>
+
+      <p>
+        Clique no botão e entre em contato
+        diretamente pelo WhatsApp.
+      </p>
+
+    </div>
+
+
+    <div class="passo">
+
+      <div class="numero">
+        3
+      </div>
+
+      <h3>Consulta</h3>
+
+      <p>
+        Combine os detalhes e o horário
+        da sua leitura.
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<section class="contato" id="contato">
+
+  <h2>Quer fazer sua consulta?</h2>
+
+  <p>
+    Entre em contato pelo WhatsApp.
+  </p>
+
+  <a
+    href="#"
+    class="botao"
+    onclick="abrirWhatsApp('Olá! Vim pelo site Tarô da Figueira e gostaria de fazer uma consulta.')"
+  >
+    Falar pelo WhatsApp
+  </a>
+
+</section>
+
+
+<footer>
+
+  <p>
+    © 2026 Tarô da Figueira
+  </p>
+
+</footer>
+
+
+<a
+  href="#"
+  class="whatsapp"
+  onclick="abrirWhatsApp('Olá! Vim pelo site Tarô da Figueira e gostaria de fazer uma consulta.')"
+>
+  ☎
+</a>
+
+
+<script>
+
+  /*
+    IMPORTANTE:
+
+    TROQUE O NÚMERO ABAIXO PELO SEU WHATSAPP.
+
+    Coloque o código do país + DDD + número.
+
+    Exemplo:
+    Brasil +55
+    São Paulo +11
+    Número 99999-9999
+
+    Ficaria:
+    5511999999999
+  */
+
+  const numeroWhatsApp = "5516993408479";
+
+
+  function abrirWhatsApp(mensagem) {
+
+    const link =
+      "https://wa.me/" +
+      numeroWhatsApp +
+      "?text=" +
+      encodeURIComponent(mensagem);
+
+    window.open(link, "_blank");
+
+  }
+
+</script>
+
+</body>
+</html>
